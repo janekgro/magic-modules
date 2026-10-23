@@ -1,0 +1,44 @@
+[
+  {
+    "name": "//compute.googleapis.com/projects/test-project/zones/us-central1-a/instanceGroupManagers/test-mig/perInstanceConfigs/instance-1",
+    "asset_type": "compute.googleapis.com/PerInstanceConfig",
+    "ancestry_path": "organizations/123/folders/456/project/test-project",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest",
+      "discovery_name": "PerInstanceConfig",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/test-project",
+      "data": {
+        "name": "instance-1",
+        "preservedState": {
+          "disks": {
+            "disk-1": {
+              "autoDelete": "NEVER",
+              "mode": "READ_WRITE",
+              "source": "projects/test-project/zones/us-central1-a/disks/disk-1"
+            }
+          },
+          "internalIPs": {
+            "nic0": {
+              "autoDelete": "NEVER",
+              "ipAddress": {
+                "address": "projects/test-project/regions/us-central1/addresses/ip-1"
+              }
+            }
+          },
+          "externalIPs": {
+            "nic0": {
+              "autoDelete": "NEVER",
+              "ipAddress": {
+                "address": "projects/test-project/regions/us-central1/addresses/ext-ip-1"
+              }
+            }
+          },
+          "metadata": {
+            "foo": "bar"
+          }
+        }
+      }
+    }
+  }
+]
