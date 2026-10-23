@@ -33,6 +33,8 @@ func ConvertResource(assets []caiasset.Asset, options *models.ResourceConverterO
 	}
 
 	asset := assets[0]
+	normalizeAssetType(&asset)
+
 	converters, ok := ConverterMap[asset.Type]
 	if !ok || len(converters) == 0 {
 		return nil, nil
@@ -92,4 +94,31 @@ func ConvertResource(assets []caiasset.Asset, options *models.ResourceConverterO
 	}
 
 	return nil, nil
+}
+
+// Legacy MMv1 YAMLs registered some converters under non-standard "phantom" types (e.g. GlobalForwardingRule).
+// Normalize canonical CAI types to match MMv1 keys without modifying upstream product YAMLs.
+func normalizeAssetType(asset *caiasset.Asset) {
+	if asset == nil {
+		return
+	}
+
+	switch asset.Type {
+	case "compute.googleapis.com/ForwardingRule":
+		if strings.Contains(asset.Name, "global") {
+			asset.Type = "compute.googleapis.com/GlobalForwardingRule"
+		}
+	case "compute.googleapis.com/Address":
+		if strings.Contains(asset.Name, "global") {
+			asset.Type = "compute.googleapis.com/GlobalAddress"
+		}
+	case "compute.googleapis.com/BackendService":
+		if strings.Contains(asset.Name, "regions") {
+			asset.Type = "compute.googleapis.com/RegionBackendService"
+		}
+	case "compute.googleapis.com/Disk":
+		if strings.Contains(asset.Name, "regions") {
+			asset.Type = "compute.googleapis.com/RegionDisk"
+		}
+	}
 }
