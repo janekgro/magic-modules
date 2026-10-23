@@ -1,0 +1,22 @@
+[
+  {
+    "name": "//compute.googleapis.com/projects/test-project/zones/us-central1-a/instanceGroupManagers/test-mig/resizeRequests/test-resize-1",
+    "asset_type": "compute.googleapis.com/InstanceGroupManagerResizeRequest",
+    "ancestry_path": "organizations/123/folders/456/project/test-project",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest",
+      "discovery_name": "InstanceGroupManagerResizeRequest",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/test-project",
+      "data": {
+        "name": "test-resize-1",
+        "description": "Resize request for scale-out",
+        "resizeBy": 10,
+        "zone": "us-central1-a",
+        "requestedRunDuration": {
+          "seconds": "3600"
+        }
+      }
+    }
+  }
+]
