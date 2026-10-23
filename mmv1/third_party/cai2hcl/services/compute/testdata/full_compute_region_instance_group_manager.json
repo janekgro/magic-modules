@@ -1,0 +1,114 @@
+[
+  {
+    "name": "//compute.googleapis.com/projects/test-project/regions/us-central1/instanceGroupManagers/test-rmig",
+    "asset_type": "compute.googleapis.com/InstanceGroupManager",
+    "ancestry_path": "organizations/123/folders/456/project/test-project",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest",
+      "discovery_name": "InstanceGroupManager",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/test-project",
+      "data": {
+        "name": "test-rmig",
+        "description": "test regional description",
+        "baseInstanceName": "test-rinstance",
+        "region": "projects/test-project/regions/us-central1",
+        "targetSize": 5,
+        "targetStoppedSize": 1,
+        "targetSuspendedSize": 1,
+        "listManagedInstancesResults": "PAGELESS",
+        "targetPools": [
+          "projects/test-project/regions/us-central1/targetPools/test-tp"
+        ],
+        "distributionPolicy": {
+          "targetShape": "EVEN",
+          "zones": [
+            {
+              "zone": "projects/test-project/zones/us-central1-a"
+            },
+            {
+              "zone": "projects/test-project/zones/us-central1-b"
+            }
+          ]
+        },
+        "versions": [
+          {
+            "name": "primary",
+            "instanceTemplate": "projects/test-project/global/instanceTemplates/test-template"
+          }
+        ],
+        "allInstancesConfig": {
+          "properties": {
+            "labels": {
+              "env": "prod"
+            },
+            "metadata": {
+              "foo": "bar"
+            }
+          }
+        },
+        "autoHealingPolicies": [
+          {
+            "healthCheck": "projects/test-project/global/healthChecks/test-hc",
+            "initialDelaySec": 300
+          }
+        ],
+        "updatePolicy": {
+          "type": "PROACTIVE",
+          "minimalAction": "RESTART",
+          "maxSurge": {
+            "fixed": 0
+          },
+          "maxUnavailable": {
+            "fixed": 4
+          },
+          "instanceRedistributionType": "PROACTIVE"
+        },
+        "instanceLifecyclePolicy": {
+          "defaultActionOnFailure": "REPAIR",
+          "forceUpdateOnRepair": "YES"
+        },
+        "standbyPolicy": {
+          "mode": "MANUAL",
+          "initialDelaySec": 0
+        },
+        "namedPorts": [
+          {
+            "name": "http",
+            "port": 80
+          }
+        ],
+        "instanceFlexibilityPolicy": {
+          "instanceSelections": {
+            "c3-standard-4-selection": {
+              "rank": 0,
+              "machineTypes": [
+                "c3-standard-4"
+              ],
+              "minCpuPlatform": "Intel Sapphire Rapids",
+              "disks": [
+                {
+                  "deviceName": "boot-disk",
+                  "boot": true,
+                  "autoDelete": true,
+                  "diskType": "pd-ssd",
+                  "diskSizeGb": 50,
+                  "sourceImage": "projects/debian-cloud/global/images/family/debian-11"
+                },
+                {
+                  "deviceName": "data-disk",
+                  "boot": false,
+                  "autoDelete": false,
+                  "initializeParams": {
+                    "diskType": "pd-balanced",
+                    "diskSizeGb": 100
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "//compute.googleapis.com/projects/test-project/zones/us-central1-a/instanceGroupManagers/test-mig",
+    "asset_type": "compute.googleapis.com/InstanceGroupManager",
+    "ancestry_path": "organizations/123/folders/456/project/test-project",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest",
+      "discovery_name": "InstanceGroupManager",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/test-project",
+      "data": {
+        "name": "test-mig",
+        "description": "test description",
+        "baseInstanceName": "test-instance",
+        "zone": "us-central1-a",
+        "targetSize": 3,
+        "targetStoppedSize": 1,
+        "targetSuspendedSize": 1,
+        "listManagedInstancesResults": "PAGELESS",
+        "targetPools": [
+          "projects/test-project/regions/us-central1/targetPools/test-tp"
+        ],
+        "versions": [
+          {
+            "name": "primary",
+            "instanceTemplate": "projects/test-project/global/instanceTemplates/test-template"
+          }
+        ],
+        "allInstancesConfig": {
+          "properties": {
+            "labels": {
+              "env": "prod"
+            },
+            "metadata": {
+              "foo": "bar"
+            }
+          }
+        },
+        "autoHealingPolicies": [
+          {
+            "healthCheck": "projects/test-project/global/healthChecks/test-hc",
+            "initialDelaySec": 300
+          }
+        ],
+        "updatePolicy": {
+          "type": "PROACTIVE",
+          "minimalAction": "REPLACE",
+          "maxSurge": {
+            "fixed": 3
+          },
+          "maxUnavailable": {
+            "fixed": 0
+          }
+        },
+        "instanceLifecyclePolicy": {
+          "defaultActionOnFailure": "REPAIR",
+          "forceUpdateOnRepair": "YES"
+        },
+        "standbyPolicy": {
+          "mode": "MANUAL",
+          "initialDelaySec": 0
+        },
+        "namedPorts": [
+          {
+            "name": "http",
+            "port": 80
+          }
+        ]
+      }
+    }
+  }
+]
