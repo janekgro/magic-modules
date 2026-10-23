@@ -1,0 +1,32 @@
+[
+  {
+    "name": "//compute.googleapis.com/projects/test-project/zones/us-central1-a/instanceGroups/test-unmanaged-group",
+    "asset_type": "compute.googleapis.com/InstanceGroup",
+    "ancestry_path": "organizations/123/folders/456/project/test-project",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest",
+      "discovery_name": "InstanceGroup",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/test-project",
+      "data": {
+        "name": "test-unmanaged-group",
+        "description": "Full unmanaged instance group",
+        "network": "projects/test-project/global/networks/default",
+        "zone": "us-central1-a",
+        "instances": [
+          "projects/test-project/zones/us-central1-a/instances/test-inst-1"
+        ],
+        "namedPorts": [
+          {
+            "name": "http",
+            "port": 80
+          },
+          {
+            "name": "https",
+            "port": 443
+          }
+        ]
+      }
+    }
+  }
+]
