@@ -52,6 +52,10 @@ var ConverterMap = map[string]map[string]models.Cai2hclConverter{
 	"compute.googleapis.com/Instance": {
 		"Default": compute.NewComputeInstanceCai2hclConverter(provider),
 	},
+	"compute.googleapis.com/InstanceTemplate": {
+		"ComputeInstanceTemplate":       compute.NewComputeInstanceTemplateCai2hclConverter(provider),
+		"ComputeRegionInstanceTemplate": compute.NewComputeRegionInstanceTemplateCai2hclConverter(provider),
+	},
 	"container.googleapis.com/NodePool": {
 		"Default": container.NewContainerNodePoolCai2hclConverter(provider),
 	},

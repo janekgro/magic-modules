@@ -1,0 +1,86 @@
+[
+  {
+    "name": "//compute.googleapis.com/projects/test-project/regions/us-central1/instanceTemplates/test-rtemplate",
+    "asset_type": "compute.googleapis.com/InstanceTemplate",
+    "ancestry_path": "organizations/123/folders/456/project/test-project",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest",
+      "discovery_name": "RegionInstanceTemplate",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/test-project",
+      "data": {
+        "name": "test-rtemplate",
+        "description": "test regional template description",
+        "region": "us-central1",
+        "properties": {
+          "description": "Regional instance description",
+          "canIpForward": true,
+          "machineType": "n2-standard-4",
+          "minCpuPlatform": "Intel Ice Lake",
+          "keyRevocationActionType": "STOP",
+          "displayDevice": {
+            "enableDisplay": true
+          },
+          "tags": {
+            "items": [
+              "http-server",
+              "https-server"
+            ]
+          },
+          "disks": [
+            {
+              "boot": true,
+              "autoDelete": true,
+              "diskSizeGb": "50",
+              "diskType": "pd-ssd"
+            },
+            {
+              "boot": false,
+              "autoDelete": false,
+              "diskSizeGb": "100",
+              "diskType": "pd-balanced",
+              "mode": "READ_WRITE"
+            }
+          ],
+          "networkInterfaces": [
+            {
+              "network": "projects/test-project/global/networks/default",
+              "subnetwork": "projects/test-project/regions/us-central1/subnetworks/default",
+              "accessConfigs": [
+                {
+                  "networkTier": "PREMIUM",
+                  "type": "ONE_TO_ONE_NAT"
+                }
+              ]
+            }
+          ],
+          "scheduling": {
+            "automaticRestart": true,
+            "onHostMaintenance": "MIGRATE"
+          },
+          "serviceAccounts": [
+            {
+              "email": "default",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            }
+          ],
+          "shieldedInstanceConfig": {
+            "enableSecureBoot": true,
+            "enableVtpm": true,
+            "enableIntegrityMonitoring": true
+          },
+          "metadata": {
+            "items": [
+              {
+                "key": "enable-oslogin",
+                "value": "TRUE"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+]
