@@ -46,6 +46,12 @@ func ConvertResource(assets []caiasset.Asset, options *models.ResourceConverterO
 		// Edge cases
 		// Handle the edge case that multiple Terraform resources share the same CAI asset type
 		switch asset.Type {
+		case "compute.googleapis.com/InstanceGroupManager":
+			if true && strings.Contains(asset.Name, "zones") {
+				converter = ConverterMap[asset.Type]["ComputeInstanceGroupManager"]
+			} else if true && strings.Contains(asset.Name, "regions") {
+				converter = ConverterMap[asset.Type]["ComputeRegionInstanceGroupManager"]
+			}
 {{- range $resourceType, $resources := $.ResourcesByCaiResourceType}}
 	{{- if gt (len $resources) 1 }}
 		case "{{ $resourceType }}":
